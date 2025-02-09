@@ -21,12 +21,8 @@ public:
             int ci = si + move_axis[i].first;
             int cj = sj + move_axis[i].second;
 
-            if (
-                (valid_axis(ci, cj) == true && grid[ci][cj] == 0) ||
-                valid_axis(ci, cj) == false
-                // || 
-                // (ci == -1 || ci == row || cj == -1 || cj == column)
-            )
+            if ((valid_axis(ci, cj) == true && grid[ci][cj] == 0) ||
+                valid_axis(ci, cj) == false)
                 parameter++;
 
             if (valid_axis(ci, cj) == true && freq[ci][cj] == false &&
