@@ -5,7 +5,7 @@ class Solution {
 
 public:
     vector<vector<int>> adj_list;
-    bool freq[10000005];
+    bool freq[1000000];
 
     void dfs(int node) {
         freq[node] = true;
