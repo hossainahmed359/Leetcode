@@ -8,13 +8,15 @@ public:
     bool freq[1005][1005];
     vector<pair<int, int>> move_axis = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
 
+    int parameter = 0;
+
     bool valid_axis(int i, int j) {
         if (i < 0 || i >= row || j < 0 || j >= column)
             return false;
         return true;
     }
 
-    void dfs(int si, int sj, vector<vector<int>>& grid, int& parameter) {
+    void dfs(int si, int sj, vector<vector<int>>& grid) {
         freq[si][sj] = true;
 
         for (int i = 0; i < 4; i++) {
@@ -27,7 +29,7 @@ public:
 
             if (valid_axis(ci, cj) == true && freq[ci][cj] == false &&
                 grid[ci][cj] == 1)
-                dfs(ci, cj, grid, parameter);
+                dfs(ci, cj, grid);
         }
     }
 
@@ -36,12 +38,10 @@ public:
         column = grid[0].size();
         memset(freq, false, sizeof(freq));
 
-        int parameter = 0;
-
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 if (freq[i][j] == false && grid[i][j] == 1) {
-                    dfs(i, j, grid, parameter);
+                    dfs(i, j, grid);
                     break;
                 }
             }
