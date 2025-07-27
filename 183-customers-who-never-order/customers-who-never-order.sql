@@ -1,22 +1,13 @@
 # Write your MySQL query statement below
 
-WITH 
-    tmp 
-AS (
-    SELECT 
-        c.id, 
-        c.name,
-        o.id AS 'order_id'
-    FROM
-        Customers AS c
-    LEFT JOIN
-        Orders AS o ON c.id = o.customerId
-)
-
-SELECT 
+SELECT
     name AS Customers
-FROM 
-    tmp
+FROM
+    Customers
 WHERE
-    order_id IS NULL;
-
+    id NOT IN (
+        SELECT
+            customerId
+        FROM
+            Orders
+    );
